@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background-color: #f8f9fa; color: #333; }
-        .hero-section { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 0; }
+        .hero-section { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 50px 0; }
+        .profile-img { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .tech-badge { background-color: #e9ecef; color: #495057; padding: 5px 10px; border-radius: 4px; display: inline-block; margin: 3px; font-size: 0.9rem; }
     </style>
@@ -18,15 +19,21 @@
     <!-- Header / Hero Section -->
     <header class="hero-section text-center">
         <div class="container">
+            <!-- Profile Image Holder -->
+            <img src="profile.png" alt="Lord Gavin S. Cruz" class="profile-img mb-3">
             <h1 class="display-4 fw-bold">Lord Gavin S. Cruz</h1>
-            <p class="lead">Information Systems Graduate | IT Support Specialist | Freelance Technician</p>
+            <p class="lead">Information Systems Graduate | IT Support | Freelance Technician</p>
             <p class="badge bg-success p-2 fs-6">Civil Service Professional Passer</p>
+            <div class="mt-2">
+                <!-- Resume Download Button -->
+                <a href="Resume 2026.pdf" target="_blank" class="btn btn-warning fw-bold btn-sm px-4 shadow-sm">📄 View / Download PDF Resume</a>
+            </div>
         </div>
     </header>
 
     <div class="container my-5">
         <div class="row">
-            <!-- Left Column: About & Skills -->
+            <!-- Left Column: Contact & Skills -->
             <div class="col-md-4 mb-4">
                 <div class="card p-4 mb-4">
                     <h3 class="h5 border-bottom pb-2 text-primary">Contact Details</h3>
@@ -60,7 +67,7 @@
                     <h2 class="h4 text-primary border-bottom pb-2">🛠️ Featured Technical Case Study</h2>
                     <h5 class="fw-bold mt-3">Laptop Hardware Restoration & Optimization</h5>
                     <p class="text-muted">Proven hands-on experience performing independent diagnostics, LCD panel replacements, swollen battery extractions, and clean operating system formatting.</p>
-                    <a href="./case-studies/laptop-repair.md" class="btn btn-outline-primary btn-sm w-25">Read Case Study</a>
+                    <a href="./case-studies/laptop-repair.md" class="btn btn-outline-primary btn-sm">Read Case Study</a>
                 </div>
 
                 <!-- Experience -->
