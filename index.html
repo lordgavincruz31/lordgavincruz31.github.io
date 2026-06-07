@@ -3,155 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lord Gavin S. Cruz | Resume Portfolio</title>
-    <!-- Bootstrap CSS for modern styling -->
+    <title>Lord Gavin S. Cruz | Portfolio</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Smooth scrolling logic */
         html { scroll-behavior: smooth; }
-        
-        /* Dark Tech Theme Variables */
         body { 
-            background-color: #0d0f12; 
-            color: #e3e8ed; 
-            padding-top: 56px; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f1f5f9; 
+            color: #1e293b; 
+            font-family: system-ui, -apple-system, sans-serif;
         }
-        
-        /* Neon Accents & Sleek Header */
-        .hero-section { 
-            background: linear-gradient(180deg, #161b22 0%, #0d0f12 100%); 
-            color: white; 
-            padding: 70px 0; 
-            border-bottom: 1px solid #21262d;
+
+        /* Split-Screen Layout for Desktop Views */
+        @media (min-width: 768px) {
+            .sidebar-fixed {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 35%;
+                height: 100vh;
+                overflow-y: auto;
+                background-color: #ffffff;
+                border-right: 1px solid #e2e8f0;
+                padding: 40px 30px;
+            }
+            .content-scroll {
+                margin-left: 35%;
+                width: 65%;
+                padding: 40px 50px;
+            }
         }
-        
+
+        /* Mobile Layout Configuration */
+        @media (max-width: 767.98px) {
+            .sidebar-fixed {
+                background-color: #ffffff;
+                padding: 30px 20px;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .content-scroll {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Modern UI Minimal Component Cards */
+        .content-block {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
         .profile-img { 
-            width: 200px; 
-            height: 200px; 
+            width: 140px; 
+            height: 140px; 
             object-fit: cover; 
-            border-radius: 50%; 
-            border: 3px solid #00e676; 
-            box-shadow: 0 0 15px rgba(0, 230, 118, 0.2); 
+            border-radius: 24px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        
-        /* Dark Card Elements */
-        .card { 
-            background-color: #161b22; 
-            border: 1px solid #21262d; 
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: all 0.25s ease; 
-        }
-        
-        .card:hover { 
-            transform: translateY(-3px); 
-            border-color: #00b0ff;
-            box-shadow: 0 6px 16px rgba(0, 176, 255, 0.15);
-        }
-        
-        /* Glowing Badges */
+
+        /* Clean Pill Badges */
         .tech-badge { 
-            background-color: #21262d; 
-            color: #00b0ff; 
-            border: 1px solid rgba(0, 176, 255, 0.3);
-            padding: 5px 12px; 
-            border-radius: 20px; 
+            background-color: #f8fafc; 
+            color: #334155; 
+            border: 1px solid #e2e8f0;
+            padding: 6px 14px; 
+            border-radius: 30px; 
             display: inline-block; 
             margin: 4px; 
-            font-size: 0.85rem; 
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        .text-custom-primary { color: #00b0ff !important; }
-        .text-custom-success { color: #00e676 !important; }
-        .border-custom-left { border-left: 4px solid #00e676 !important; }
-        
-        /* Custom Scrollbar for premium tech feel */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #0d0f12; }
-        ::-webkit-scrollbar-thumb { background: #21262d; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00b0ff; }
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #cbd5e1;
+            margin-bottom: 25px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #475569;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- INTERACTIVE: Dark Sticky Top Navigation Bar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom border-secondary shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-custom-success" href="#">⚡ GS_CRUZ.SYS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portfolioNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="portfolioNav">
-                <div class="navbar-nav gap-2">
-                    <a class="nav-link btn btn-sm btn-outline-light text-white border-0 px-3" href="#objective">System_About</a>
-                    <a class="nav-link btn btn-sm btn-outline-light text-white border-0 px-3" href="#experience">Experience_Logs</a>
-                    <a class="nav-link btn btn-sm btn-outline-light text-white border-0 px-3" href="#capstone">Core_Project</a>
-                    <a class="nav-link btn btn-sm btn-outline-light text-white border-0 px-3" href="#certifications">Credentials</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Header / Hero Section -->
-    <header class="hero-section text-center">
-        <div class="container">
-            <img src="profile.jpg" alt="Lord Gavin S. Cruz" class="profile-img mb-3">
-            <h1 class="display-4 fw-bold text-white">Lord Gavin S. Cruz</h1>
-            <p class="lead text-muted">Information Systems Graduate <span class="text-custom-primary">|</span> Freelance IT Technician</p>
-            <span class="badge bg-outline border border-success text-custom-success p-2 fs-6 mb-3">🛡️ Civil Service Professional Passer</span>
-            <div class="mt-2">
-                <a href="Resume 2026.pdf" target="_blank" class="btn btn-warning fw-bold btn-sm px-4 shadow-sm text-dark">📄 Open PDF Resume</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="container my-5">
-        <div class="row">
-            <!-- Left Column: Contact, Education, Certifications -->
-            <div class="col-md-4 mb-4">
-                <!-- Contact Details -->
-                <div class="card p-4 mb-4 text-light">
-                    <h3 class="h5 border-bottom pb-2 text-custom-primary fw-bold">System Connection</h3>
-                    <p class="mb-2">📍 Angono, Rizal, Philippines</p>
-                    <p class="mb-2">📞 0927 7783 810</p>
-                    <p class="mb-0">📧 lordgavin.cruz31@gmail.com</p>
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            
+            <!-- LEFT FIXED SIDEBAR: Bio, Contacts, Education, Credentials -->
+            <div class="sidebar-fixed">
+                <div class="text-center text-md-start">
+                    <img src="profile.jpg" alt="Lord Gavin S. Cruz" class="profile-img mb-3">
+                    <h1 class="h3 fw-bold mb-1" style="color: #0f172a;">Lord Gavin S. Cruz</h1>
+                    <p class="text-muted mb-2">Information Systems Graduate | Freelance IT Technician</p>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1.5 rounded mb-4" style="font-size: 0.8rem;">🏅 Civil Service Professional Passer</span>
+                    
+                    <div class="mb-4">
+                        <a href="Resume 2026.pdf" target="_blank" class="btn btn-dark btn-sm w-100 fw-bold py-2 shadow-sm">📄 Open PDF Resume</a>
+                    </div>
                 </div>
 
-                <!-- Education Section -->
-                <div class="card p-4 mb-4">
-                    <h3 class="h5 border-bottom pb-2 text-custom-primary fw-bold">Education Modules</h3>
+                <hr class="my-4 text-muted">
+
+                <!-- Contact Details Links -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted fw-bold small mb-2">Connect</h6>
+                    <p class="mb-1 small">📍 Angono, Rizal, Philippines</p>
+                    <p class="mb-1 small">📞 0927 7783 810</p>
+                    <p class="mb-0 small">📧 lordgavin.cruz31@gmail.com</p>
+                </div>
+
+                <!-- Education Layout Block -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted fw-bold small mb-3">Education Modules</h6>
                     <div class="mb-3">
-                        <h6 class="fw-bold text-white mb-0">BS Information Systems</h6>
-                        <span class="text-muted d-block small">University of Rizal System - Binangonan</span>
-                        <small class="text-custom-primary fw-bold">Aug 2022 - June 2026</small>
+                        <span class="fw-bold d-block small text-dark">BS Information Systems</span>
+                        <small class="text-muted d-block">University of Rizal System - Binangonan</small>
+                        <small class="text-primary fw-bold">2022 - 2026</small>
                     </div>
                     <div>
-                        <h6 class="fw-bold text-white mb-0">Accountancy, Business and Management</h6>
-                        <span class="text-muted d-block small">APEC Schools - Taytay</span>
-                        <small class="text-muted">Jun 2017 - Jun 2019</small>
+                        <span class="fw-bold d-block small text-dark">Accountancy, Business and Management</span>
+                        <small class="text-muted d-block">APEC Schools - Taytay</small>
+                        <small class="text-muted">2017 - 2019</small>
                     </div>
                 </div>
 
                 <!-- SECURE CERTIFICATIONS SECTION -->
-                <div class="card p-4 mb-4" id="certifications">
-                    <h3 class="h5 border-bottom pb-2 text-custom-primary fw-bold">Verified Credentials</h3>
-                    <ul class="list-unstyled mb-3 text-muted">
-                        <li class="mb-3">💥 <strong class="text-white">Civil Service Professional Eligibility</strong> <br><small>CSC (March 2026)</small></li>
-                        <li class="mb-3">🔌 <strong class="text-white">Computer Hardware Basics</strong> <br><small>DICT & Cisco Networking Academy (March 2025)</small></li>
-                        <li class="mb-2">🛠️ <strong class="text-white">Computer Systems Servicing (NCII)</strong> <br><small>TESDA Certification</small></li>
+                <div>
+                    <h6 class="text-uppercase text-muted fw-bold small mb-3">Verified Credentials</h6>
+                    <ul class="list-unstyled mb-3 small text-muted">
+                        <li class="mb-2">✓ <strong class="text-dark">Civil Service Professional</strong> (March 2026)</li>
+                        <li class="mb-2">✓ <strong class="text-dark">Computer Hardware Basics</strong> (DICT/Cisco)</li>
+                        <li class="mb-0">✓ <strong class="text-dark">Computer Systems Servicing (NCII)</strong> (TESDA)</li>
                     </ul>
-                    <div class="p-3 border border-secondary rounded text-center style-dark" style="background-color: #0d0f12;">
-                        <p class="text-muted mb-2 small">🛡️ Secure credential logs are locked for data integrity and identity safety.</p>
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lordgavin.cruz31@gmail.com&su=Request%20for%20Certification%20Verification%20-%20Lord%20Gavin%20Cruz" target="_blank" class="btn btn-sm btn-outline-success w-100 fw-bold">📧 Request Verification Proof</a>
+                    <div class="p-3 bg-light border rounded text-center">
+                        <p class="text-muted mb-2" style="font-size: 0.75rem;">🛡️ Unredacted documents are kept off public indexing for compliance safety.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lordgavin.cruz31@gmail.com&su=Request%20for%20Certification%20Verification%20-%20Lord%20Gavin%20Cruz" target="_blank" class="btn btn-xs btn-outline-dark w-100 fw-bold style-dark" style="font-size: 0.75rem;">📧 Request Credentials Link</a>
                     </div>
                 </div>
+            </div>
+
+            <!-- RIGHT SCROLLING CONTENT: Objective, Experience, Capstone, Skills -->
+            <div class="content-scroll">
                 
-                <!-- Technical & Soft Skills -->
-                <div class="card p-4">
-                    <h3 class="h5 border-bottom pb-2 text-custom-primary fw-bold">Skills Inventory</h3>
-                    <div class="mb-3">
+                <!-- Career Objective -->
+                <div class="content-block">
+                    <h2 class="section-title">Objective</h2>
+                    <p class="mb-0 text-secondary" style="line-height: 1.7;">
+                        An adaptable BS Information Systems student with a TESDA NCII in Computer Systems Servicing and programming experience. Seeking to apply versatile troubleshooting skills to resolve hardware and software challenges while contributing to team operations.
+                    </p>
+                </div>
+
+                <!-- Work Experience Timeline -->
+                <div class="content-block">
+                    <h2 class="section-title">💼 Work History</h2>
+                    
+                    <!-- Panasonic -->
+                    <div class="timeline-item">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-1">
+                            <h5 class="h6 fw-bold mb-0 text-dark">Panasonic Manufacturing Philippines Corp. | Technical Intern</h5>
+                            <span class="badge bg-light text-secondary border">Jan 2026 - May 2026</span>
+                        </div>
+                        <span class="text-muted d-block small mb-2">Service Engineering Department</span>
+                        <ul class="ps-3 text-secondary small mb-0" style="line-height: 1.6;">
+                            <li>Assisted in technical inspections, troubleshooting, and evaluation tasks.</li>
+                            <li>Participated in onsite servicing and support activities.</li>
+                            <li>Utilized diagnostic tools such as clamp meter and multimeter.</li>
+                            <li>Supported documentation, reporting, and operational tasks.</li>
+                            <li>Collaborated with technicians and service teams.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Angono Government -->
+                    <div class="timeline-item">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-1">
+                            <h5 class="h6 fw-bold mb-0 text-dark">Municipality of Angono (MCRO) | Office Staff & Data Encoder</h5>
+                            <span class="badge bg-light text-secondary border">Nov 2025 - Dec 2025</span>
+                        </div>
+                        <span class="text-muted d-block small mb-2">Civil Registry Department</span>
+                        <ul class="ps-3 text-secondary small mb-0" style="line-height: 1.6;">
+                            <li>Encoded newly registered birth certificates using PhilCRIS.</li>
+                            <li>Assisted clients with inquiries on birth and marriage registrations.</li>
+                            <li>Processed PSA-related requests (birth, death, CENOMAR).</li>
+                            <li>Organized and sorted documents for release.</li>
+                            <li>Assisted in clerical and front desk tasks.</li>
+                        </ul>
+                    </div>
+
+                    <!-- McDonalds -->
+                    <div class="timeline-item">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-1">
+                            <h5 class="h6 fw-bold mb-0 text-dark">McDonald's Philippines | Service Crew</h5>
+                            <span class="badge bg-light text-secondary border">May 2019 - Oct 2020</span>
+                        </div>
+                        <span class="text-muted d-block small mb-2">Tikling Taytay Rizal Branch</span>
+                        <ul class="ps-3 text-secondary small mb-0" style="line-height: 1.6;">
+                            <li>Performed kitchen and lobby operations in a fast-paced environment.</li>
+                            <li>Assisted in food preparation and order handling.</li>
+                            <li>Maintained cleanliness and service standards.</li>
+                            <li>Delivered customer service and supported team operations.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Capstone Project Feature -->
+                <div class="content-block border-start border-danger border-4">
+                    <h2 class="section-title text-danger">🎮 Capstone Architecture</h2>
+                    <h5 class="h6 fw-bold text-dark mb-1">Code Red: Bitoy's Rescue Mission!</h5>
+                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle mb-3" style="font-size: 0.75rem;">2.5D Action Game | Unity Engine & C#</span>
+                    <p class="small text-muted mb-2"><strong>Role: Lead Developer & Primary Programmer</strong></p>
+                    <ul class="ps-3 text-secondary small" style="line-height: 1.6;">
+                        <li>Designed and implemented core gameplay systems using C# and object-oriented programming.</li>
+                        <li>Led overall game design decisions, mechanics, and system flow.</li>
+                        <li>Coordinated and guided team members to ensure timely project completion.</li>
+                        <li>Managed debugging, testing, and integration of game features.</li>
+                    </ul>
+                    <div class="mt-3 d-flex align-items-center gap-2 flex-wrap">
+                        <a href="https://drive.google.com/file/d/1sw59M3ccB6KyQOEMvczdqkcxeAwE6koW/view?usp=drive_link" target="_blank" class="btn btn-danger fw-bold btn-sm px-4 shadow-sm">📥 Download Game Bundle (.ZIP)</a>
+                        <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle p-2" style="font-size: 0.75rem;">🪟 Windows Setup Only</span>
+                    </div>
+                </div>
+
+                <!-- Technical Skills Matrix Grid -->
+                <div class="content-block">
+                    <h2 class="section-title">🛠️ Technical Skills Inventory</h2>
+                    <div class="mb-1">
                         <span class="tech-badge">Basic Troubleshooting</span>
                         <span class="tech-badge">Computer Hardware Maintenance</span>
                         <span class="tech-badge">Laptop Diagnostics & Repair</span>
@@ -164,128 +250,40 @@
                         <span class="tech-badge">Basic Video Editing (Capcut)</span>
                         <span class="tech-badge">Microsoft Office / Google Workspace</span>
                     </div>
-                    <h3 class="h5 border-bottom pb-2 mt-3 text-custom-primary fw-bold">Core Matrix</h3>
-                    <div class="d-flex flex-wrap gap-1">
-                        <span class="badge bg-secondary opacity-75">Communication</span>
-                        <span class="badge bg-secondary opacity-75">Problem-solving</span>
-                        <span class="badge bg-secondary opacity-75">Adaptability</span>
-                        <span class="badge bg-secondary opacity-75">Teamwork</span>
-                        <span class="badge bg-secondary opacity-75">Time Management</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Objective, Experience, Capstone, Seminars -->
-            <div class="col-md-8">
-                <!-- Career Objective -->
-                <div class="card p-4 mb-4" id="objective">
-                    <h2 class="h4 text-custom-primary border-bottom pb-2 fw-bold">Objective Statement</h2>
-                    <p class="mt-2 mb-0 text-muted" style="line-height: 1.6;">
-                        An adaptable BS Information Systems student with a TESDA NCII in Computer Systems Servicing and programming experience. Seeking to apply versatile troubleshooting skills to resolve hardware and software challenges while contributing to team operations.
-                    </p>
                 </div>
 
-                <!-- Experience -->
-                <div class="card p-4 mb-4" id="experience">
-                    <h2 class="h4 text-custom-primary border-bottom pb-2 fw-bold">💼 Work History Logs</h2>
-                    
-                    <!-- Panasonic -->
-                    <div class="mt-3">
-                        <div class="d-flex justify-content-between align-items-start flex-wrap">
-                            <h6 class="fw-bold text-white mb-0">Panasonic Manufacturing Philippines Corp. | Technical Intern</h6>
-                            <small class="text-custom-success fw-bold">Jan 2026 - May 2026</small>
-                        </div>
-                        <span class="text-muted d-block small mb-2">Service Engineering Department</span>
-                        <ul class="ps-3 text-muted small" style="line-height: 1.6;">
-                            <li>Assisted in technical inspections, troubleshooting, and evaluation tasks.</li>
-                            <li>Participated in onsite servicing and support activities.</li>
-                            <li>Utilized diagnostic tools such as clamp meter and multimeter.</li>
-                            <li>Supported documentation, reporting, and operational tasks.</li>
-                            <li>Collaborated with technicians and service teams.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Angono Government -->
-                    <div class="mt-4">
-                        <div class="d-flex justify-content-between align-items-start flex-wrap">
-                            <h6 class="fw-bold text-white mb-0">Municipality of Angono (MCRO) | Office Staff & Data Encoder</h6>
-                            <small class="text-muted fw-bold">Nov 2025 - Dec 2025</small>
-                        </div>
-                        <span class="text-muted d-block small mb-2">Civil Registry Department</span>
-                        <ul class="ps-3 text-muted small" style="line-height: 1.6;">
-                            <li>Encoded newly registered birth certificates using PhilCRIS.</li>
-                            <li>Assisted clients with inquiries on birth and marriage registrations.</li>
-                            <li>Processed PSA-related requests (birth, death, CENOMAR).</li>
-                            <li>Organized and sorted documents for release.</li>
-                            <li>Assisted in clerical and front desk tasks.</li>
-                        </ul>
-                    </div>
-
-                    <!-- McDonalds -->
-                    <div class="mt-4">
-                        <div class="d-flex justify-content-between align-items-start flex-wrap">
-                            <h6 class="fw-bold text-white mb-0">McDonald's Philippines | Service Crew</h6>
-                            <small class="text-muted fw-bold">May 2019 - Oct 2020</small>
-                        </div>
-                        <span class="text-muted d-block small mb-2">Tikling Taytay Rizal Branch</span>
-                        <ul class="ps-3 text-muted small" style="line-height: 1.6;">
-                            <li>Performed kitchen and lobby operations in a fast-paced environment.</li>
-                            <li>Assisted in food preparation and order handling.</li>
-                            <li>Maintained cleanliness and service standards.</li>
-                            <li>Delivered customer service and supported team operations.</li>
-                        </ul>
+                <!-- Seminars & Training Block -->
+                <div class="content-block">
+                    <h2 class="section-title">📜 Academic Seminars Block</h2>
+                    <div class="table-responsive">
+                        <table class="table table-sm mt-1 mb-0 text-secondary" style="font-size: 0.9rem;">
+                            <tbody>
+                                <tr class="border-bottom">
+                                    <td class="py-2.5 text-dark"><strong>Next Stop: Career</strong><br><small class="text-muted">URS Binangonan Function Hall</small></td>
+                                    <td class="text-end text-nowrap py-2.5 text-primary fw-medium"><small>Jan 14, 2026</small></td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td class="py-2.5 text-dark"><strong>Creating Your Portfolio Using GitHub Pages</strong><br><small class="text-muted">URS Binangonan Campus</small></td>
+                                    <td class="text-end text-nowrap py-2.5 text-primary fw-medium"><small>Mar 5, 2026</small></td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 text-dark"><strong>KiroQuest: AWS Club Cloud Philippines</strong><br><small class="text-muted">eCloudValley Philippines</small></td>
+                                    <td class="text-end text-nowrap py-2.5 text-primary fw-medium"><small>Apr 9, 2026</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <!-- Capstone Project -->
-                <div class="card p-4 mb-4 border-custom-left" id="capstone">
-                    <h2 class="h4 text-custom-success border-bottom pb-2 fw-bold">🎮 Featured Project Architecture</h2>
-                    <h6 class="fw-bold text-white mt-3 mb-0">Code Red: Bitoy's Rescue Mission! (2.5D Action Game)</h6>
-                    <span class="badge bg-dark border border-secondary text-custom-primary my-2" style="font-size: 0.8rem;">Role: Lead Developer & Primary Programmer</span>
-                    <ul class="ps-3 text-muted small" style="line-height: 1.6;">
-                        <li>Served as the lead developer and primary programmer for the capstone project.</li>
-                        <li>Designed and implemented core gameplay systems using C# and object-oriented programming.</li>
-                        <li>Led overall game design decisions, mechanics, and system flow.</li>
-                        <li>Coordinated and guided team members to ensure timely project completion.</li>
-                        <li>Managed debugging, testing, and integration of game features.</li>
-                    </ul>
-                    <div class="mt-3 d-flex align-items-center gap-2">
-                        <!-- Direct Link to Drive File -->
-                        <a href="https://drive.google.com/file/d/1sw59M3ccB6KyQOEMvczdqkcxeAwE6koW/view?usp=drive_link" target="_blank" class="btn btn-danger fw-bold btn-sm px-4 shadow-sm">📥 Download Project Build (.ZIP)</a>
-                        <span class="badge bg-dark border border-secondary text-muted p-2" style="font-size: 0.8rem;">🪟 Windows OS Only</span>
-                    </div>
-                </div>
-
-                <!-- Seminars & Training -->
-                <div class="card p-4">
-                    <h2 class="h4 text-custom-primary border-bottom pb-2 fw-bold">📜 External Training Blocks</h2>
-                    <table class="table table-dark table-borderless table-sm mt-2 mb-0 text-muted" style="font-size: 0.95rem; background-color: transparent;">
-                        <tbody>
-                            <tr>
-                                <td class="bg-transparent text-white"><strong>Next Stop: Career</strong><br><small class="text-muted">University of Rizal System - Binangonan</small></td>
-                                <td class="bg-transparent text-end text-nowrap text-custom-primary"><small>Jan 14, 2026</small></td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent text-white" style="padding-top: 12px;"><strong>Creating Your Portfolio Using GitHub Pages</strong><br><small class="text-muted">University of Rizal System - Binangonan</small></td>
-                                <td class="bg-transparent text-end text-nowrap text-custom-primary" style="padding-top: 12px;"><small>Mar 5, 2026</small></td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent text-white" style="padding-top: 12px;"><strong>KiroQuest: AWS Club Cloud Philippines</strong><br><small class="text-muted">eCloudValley Philippines</small></td>
-                                <td class="text-end text-nowrap text-custom-primary" style="padding-top: 12px;"><small>Apr 9, 2026</small></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Subtle Dashboard Footer -->
+                <footer class="text-center text-md-start text-muted mt-4" style="font-size: 0.8rem;">
+                    &copy; 2026 Lord Gavin S. Cruz. Powered by Bootstrap Dashboard Layout Configurations.
+                </footer>
 
             </div>
+            
         </div>
     </div>
 
-    <footer class="text-center py-4 mt-5 border-top border-secondary" style="background-color: #161b22;">
-        <small class="text-muted">&copy; 2026 Lord Gavin S. Cruz. Deployed securely via GitHub Systems Engine.</small>
-    </footer>
-
-    <!-- Bootstrap JS Bundle for navbar trigger -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
