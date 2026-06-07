@@ -14,48 +14,23 @@
             font-family: system-ui, -apple-system, sans-serif;
         }
 
-        /* Split-Screen Layout for Desktop Views */
-        @media (min-width: 768px) {
-            .sidebar-fixed {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 35%;
-                height: 100vh;
-                overflow-y: auto;
-                background-color: #ffffff;
-                border-right: 1px solid #e2e8f0;
-                padding: 0 0 40px 0; /* Managed via inner blocks for full-bleed color banner */
-            }
-            .content-scroll {
-                margin-left: 35%;
-                width: 65%;
-                padding: 40px 50px;
-            }
+        /* Sidebar Styling styling container */
+        .sidebar-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
         }
 
-        /* Mobile Layout Configuration */
-        @media (max-width: 767.98px) {
-            .sidebar-fixed {
-                background-color: #ffffff;
-                padding: 0 0 30px 0;
-                border-bottom: 1px solid #e2e8f0;
-            }
-            .content-scroll {
-                padding: 30px 20px;
-            }
-        }
-
-        /* Sidebar Color Top Banner */
         .sidebar-header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 40px 25px 30px 25px;
-            margin-bottom: 25px;
+            padding: 35px 20px;
         }
 
         .sidebar-content-padding {
-            padding: 0 30px;
+            padding: 25px;
         }
 
         /* Modern UI Minimal Component Cards */
@@ -103,80 +78,84 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: #1e40af; /* Deep Royal Blue Titles */
+            color: #1e40af;
             margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container-fluid p-0">
-        <div class="row g-0">
+    <!-- Main Flexbox Grid System Configuration -->
+    <div class="container my-5">
+        <div class="row">
             
-            <!-- LEFT FIXED SIDEBAR: Styled with Rich Branding Gradients -->
-            <div class="sidebar-fixed d-flex flex-column align-items-center text-center">
-                
-                <!-- Color Top Block Header -->
-                <div class="sidebar-header w-100 d-flex flex-column align-items-center">
-                    <img src="profile.jpg" alt="Lord Gavin S. Cruz" class="profile-img mb-3">
-                    <h1 class="h4 fw-bold mb-1 text-white">Lord Gavin S. Cruz</h1>
-                    <p class="small text-white-50 mb-3">Information Systems Graduate | Freelance IT Technician</p>
-                    <span class="badge bg-success text-white border border-success px-2.5 py-1.5 rounded-pill shadow-sm" style="font-size: 0.75rem; background-color: #10b981 !important;">🏅 Civil Service Professional Passer</span>
-                </div>
-
-                <!-- Inner Content Container with spacing -->
-                <div class="sidebar-content-padding w-100">
-                    <div class="mb-4">
-                        <a href="Resume 2026.pdf" target="_blank" class="btn btn-dark btn-sm w-100 fw-bold py-2 shadow-sm text-white" style="background-color: #0f172a;">📄 View Full PDF Resume</a>
+            <!-- LEFT COLUMN (33% width layout block on desktop) -->
+            <div class="col-md-4 mb-4">
+                <div class="sidebar-card text-center">
+                    
+                    <!-- Color Banner block -->
+                    <div class="sidebar-header d-flex flex-column align-items-center">
+                        <img src="profile.jpg" alt="Lord Gavin S. Cruz" class="profile-img mb-3">
+                        <h1 class="h4 fw-bold mb-1 text-white">Lord Gavin S. Cruz</h1>
+                        <p class="small text-white-50 mb-3">Information Systems Graduate | Freelance IT Technician</p>
+                        <span class="badge bg-success text-white border border-success px-2.5 py-1.5 rounded-pill shadow-sm" style="font-size: 0.75rem; background-color: #10b981 !important;">🏅 Civil Service Professional Passer</span>
                     </div>
 
-                    <hr class="my-3 text-muted">
-
-                    <!-- Contact Block -->
-                    <div class="mb-4 w-100 text-start ps-2">
-                        <h6 class="text-uppercase text-primary fw-bold small mb-2" style="color: #2563eb !important;">Connect Address</h6>
-                        <p class="mb-1 small text-secondary">📍 Angono, Rizal, Philippines</p>
-                        <p class="mb-1 small text-secondary">📞 0927 7783 810</p>
-                        <p class="mb-0 small text-secondary">📧 lordgavin.cruz31@gmail.com</p>
-                    </div>
-
-                    <hr class="my-3 text-muted">
-
-                    <!-- Education Block -->
-                    <div class="mb-4 w-100 text-start ps-2">
-                        <h6 class="text-uppercase text-primary fw-bold small mb-3" style="color: #2563eb !important;">Education Framework</h6>
-                        <div class="mb-3">
-                            <span class="fw-bold d-block small text-dark">BS Information Systems</span>
-                            <small class="text-muted d-block">University of Rizal System - Binangonan</small>
-                            <small class="text-primary fw-bold">2022 - 2026</small>
+                    <!-- Inner Card Details info -->
+                    <div class="sidebar-content-padding text-start">
+                        <div class="mb-4">
+                            <a href="Resume 2026.pdf" target="_blank" class="btn btn-dark btn-sm w-100 fw-bold py-2 shadow-sm text-white" style="background-color: #0f172a;">📄 View Full PDF Resume</a>
                         </div>
+
+                        <hr class="my-3 text-muted">
+
+                        <!-- Contact Details Block -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-primary fw-bold small mb-2" style="color: #2563eb !important;">Connect Address</h6>
+                            <p class="mb-1 small text-secondary">📍 Angono, Rizal, Philippines</p>
+                            <p class="mb-1 small text-secondary">📞 0927 7783 810</p>
+                            <p class="mb-0 small text-secondary">📧 lordgavin.cruz31@gmail.com</p>
+                        </div>
+
+                        <hr class="my-3 text-muted">
+
+                        <!-- Education Block -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-primary fw-bold small mb-3" style="color: #2563eb !important;">Education Framework</h6>
+                            <div class="mb-3">
+                                <span class="fw-bold d-block small text-dark">BS Information Systems</span>
+                                <small class="text-muted d-block">University of Rizal System - Binangonan</small>
+                                <small class="text-primary fw-bold">2022 - 2026</small>
+                            </div>
+                            <div>
+                                <span class="fw-bold d-block small text-dark">Accountancy, Business and Management</span>
+                                <small class="text-muted d-block">APEC Schools - Taytay</small>
+                                <small class="text-muted fw-medium">2017 - 2019</small>
+                            </div>
+                        </div>
+
+                        <hr class="my-3 text-muted">
+
+                        <!-- Secure Certifications Block -->
                         <div>
-                            <span class="fw-bold d-block small text-dark">Accountancy, Business and Management</span>
-                            <small class="text-muted d-block">APEC Schools - Taytay</small>
-                            <small class="text-muted fw-medium">2017 - 2019</small>
+                            <h6 class="text-uppercase text-primary fw-bold small mb-3" style="color: #2563eb !important;">Verified Credentials</h6>
+                            <ul class="list-unstyled mb-3 small text-secondary">
+                                <li class="mb-2"><span class="text-success fw-bold">✓</span> <strong class="text-dark">Civil Service Professional</strong> (2026)</li>
+                                <li class="mb-2"><span class="text-success fw-bold">✓</span> <strong class="text-dark">Computer Hardware Basics</strong> (DICT)</li>
+                                <li class="mb-0"><span class="text-success fw-bold">✓</span> <strong class="text-dark">Computer Systems Servicing (NCII)</strong></li>
+                            </ul>
+                            <div class="p-3 bg-light border border-light-subtle rounded text-center shadow-sm">
+                                <p class="text-muted mb-2" style="font-size: 0.75rem;">🛡️ Unredacted documents are kept off public indexing for data integrity compliance.</p>
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lordgavin.cruz31@gmail.com&su=Request%20for%20Certification%20Verification%20-%20Lord%20Gavin%20Cruz" target="_blank" class="btn btn-xs btn-outline-success w-100 fw-bold shadow-sm" style="font-size: 0.75rem; border-color: #10b981; color: #10b981;">📧 Request Verification Logs</a>
+                            </div>
                         </div>
                     </div>
 
-                    <hr class="my-3 text-muted">
-
-                    <!-- Secure Certifications Block -->
-                    <div class="w-100 text-start ps-2">
-                        <h6 class="text-uppercase text-primary fw-bold small mb-3" style="color: #2563eb !important;">Verified Credentials</h6>
-                        <ul class="list-unstyled mb-3 small text-secondary">
-                            <li class="mb-2"><span class="text-success fw-bold">✓</span> <strong class="text-dark">Civil Service Professional</strong> (2026)</li>
-                            <li class="mb-2"><span class="text-success fw-bold">✓</span> <strong class="text-dark">Computer Hardware Basics</strong> (DICT)</li>
-                            <li class="mb-0"><span class="text-success fw-bold">✓</span> <strong class="text-dark">Computer Systems Servicing (NCII)</strong></li>
-                        </ul>
-                        <div class="p-3 bg-light border border-light-subtle rounded text-center shadow-sm">
-                            <p class="text-muted mb-2" style="font-size: 0.75rem;">🛡️ Unredacted documents are kept off public indexing for data integrity compliance.</p>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lordgavin.cruz31@gmail.com&su=Request%20for%20Certification%20Verification%20-%20Lord%20Gavin%20Cruz" target="_blank" class="btn btn-xs btn-outline-success w-100 fw-bold shadow-sm" style="font-size: 0.75rem; border-color: #10b981; color: #10b981;">📧 Request Verification Logs</a>
-                    </div>
                 </div>
-
             </div>
 
-            <!-- RIGHT SCROLLING CONTENT: Clean Highlights -->
-            <div class="content-scroll">
+            <!-- RIGHT COLUMN (66% width main text blocks layout) -->
+            <div class="col-md-8">
                 
                 <!-- Career Objective -->
                 <div class="content-block" style="border-top: 4px solid #1e40af;">
@@ -293,6 +272,7 @@
                                     <td class="text-end text-nowrap py-2.5 text-primary fw-medium"><small>Apr 9, 2026</small></td>
                                 </tr>
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
