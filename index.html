@@ -129,7 +129,7 @@
             border-bottom: 1px dashed #1f2937;
         }
         
-        /* FIXED BRIGHT BLUE ARROWS FOR CASE STUDIES */
+        /* BRIGHT BLUE ARROWS FOR CASE STUDIES */
         .accordion-button::after {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2338bdf8'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
             background-size: 1.25rem;
@@ -183,22 +183,22 @@
             display: inline-block;
         }
 
-        /* Sticky Right-Side Navigation Dock */
+        /* FIXED: VISIBLE STICKY RIGHT-SIDE NAVIGATION DOCK */
         .floating-nav {
             position: fixed;
-            right: 25px;
+            right: 12px; /* Placed close to edge to avoid text overlap */
             top: 50%;
             transform: translateY(-50%);
             z-index: 1050;
-            background-color: rgba(17, 24, 39, 0.85);
+            background-color: rgba(17, 24, 39, 0.9);
             border: 1px solid #1f2937;
-            padding: 15px 10px;
-            border-radius: 12px;
+            padding: 12px 6px;
+            border-radius: 10px;
             backdrop-filter: blur(8px);
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            gap: 10px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
         }
         .floating-nav a {
             color: #64748b;
@@ -210,18 +210,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 6px;
             border: 1px solid transparent;
         }
         .floating-nav a:hover {
             color: #38bdf8;
             background-color: rgba(56, 189, 248, 0.1);
-            border-color: rgba(56, 189, 248, 0.2);
+            border-color: rgba(56, 189, 248, 0.3);
         }
 
-        @media (max-width: 1400px) {
+        /* Hides only on narrow touch displays (phones) where side margin space is zero */
+        @media (max-width: 768px) {
             .floating-nav { display: none; }
         }
 
