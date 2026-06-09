@@ -11,6 +11,8 @@
             background-color: #0b0f19; 
             color: #cbd5e1; 
             font-family: system-ui, -apple-system, sans-serif;
+            /* Added top padding on body for mobile viewports to prevent fixed top-nav from hiding elements */
+            padding-top: 60px; 
         }
 
         /* Tech Terminal Section Headers */
@@ -183,23 +185,33 @@
             display: inline-block;
         }
 
-        /* FIXED: VISIBLE STICKY RIGHT-SIDE NAVIGATION DOCK */
+        /* RESPONSIVE FLOATING NAVIGATION DOCK: TOP MOBILE / RIGHT DESKTOP */
         .floating-nav {
             position: fixed;
-            right: 12px; /* Placed close to edge to avoid text overlap */
-            top: 50%;
-            transform: translateY(-50%);
             z-index: 1050;
-            background-color: rgba(17, 24, 39, 0.9);
+            background-color: rgba(17, 24, 39, 0.95);
             border: 1px solid #1f2937;
-            padding: 12px 6px;
-            border-radius: 10px;
             backdrop-filter: blur(8px);
             display: flex;
-            flex-direction: column;
-            gap: 10px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+            
+            /* Mobile Default View Configuration (Sticky Horizontal Bar) */
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 50px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 0;
+            border-radius: 0;
+            border-top: none;
+            border-left: none;
+            border-right: none;
         }
+        
         .floating-nav a {
             color: #64748b;
             text-decoration: none;
@@ -210,8 +222,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border-radius: 6px;
             border: 1px solid transparent;
         }
@@ -221,9 +233,25 @@
             border-color: rgba(56, 189, 248, 0.3);
         }
 
-        /* Hides only on narrow touch displays (phones) where side margin space is zero */
-        @media (max-width: 768px) {
-            .floating-nav { display: none; }
+        /* Media Breakpoint Override: Desktop Media Rule transformations */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 0; /* Reset top padding when navigation docks right */
+            }
+            .floating-nav {
+                /* Transform to Sticky Right-Side Vertical Panel */
+                top: 50%;
+                right: 12px;
+                left: auto;
+                transform: translateY(-50%);
+                width: auto;
+                height: auto;
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 6px;
+                border-radius: 10px;
+                border: 1px solid #1f2937;
+            }
         }
 
         .text-light-muted { color: #94a3b8; }
@@ -231,7 +259,7 @@
 </head>
 <body>
 
-    <nav class="floating-nav" aria-label="Sidebar Navigation Matrix">
+    <nav class="floating-nav" aria-label="Responsive Navigation Deck">
         <a href="#target" title="Career Target">01</a>
         <a href="#history" title="Experience History">02</a>
         <a href="#capstone" title="Capstone Project">★</a>
