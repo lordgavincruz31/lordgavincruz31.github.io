@@ -109,17 +109,35 @@
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
         }
 
-        /* Case Study Record Module */
-        .case-card {
-            background-color: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
+        /* Clean Customized Accordion Cards */
+        .accordion-item {
+            background-color: #111827 !important;
+            border: 1px solid #1f2937 !important;
+            border-radius: 12px !important;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .accordion-button {
+            background-color: #111827 !important;
+            color: #ffffff !important;
+            box-shadow: none !important;
+            padding: 20px !important;
+            font-weight: 600;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #38bdf8 !important;
+            border-bottom: 1px dashed #1f2937;
+        }
+        .accordion-button::after {
+            filter: invert(72%) sepia(51%) saturate(3015%) dvh(182deg) rotate(167deg) brightness(101%) contrast(97%);
+        }
+        .accordion-body {
+            background-color: #111827 !important;
+            padding: 25px 20px !important;
         }
         .case-tag {
             font-family: monospace;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             padding: 3px 8px;
             border-radius: 4px;
         }
@@ -168,10 +186,62 @@
             display: inline-block;
         }
 
+        /* Sticky Right-Side Navigation Dock */
+        .floating-nav {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1050;
+            background-color: rgba(17, 24, 39, 0.85);
+            border: 1px solid #1f2937;
+            padding: 15px 10px;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .floating-nav a {
+            color: #64748b;
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+        }
+        .floating-nav a:hover {
+            color: #38bdf8;
+            background-color: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.2);
+        }
+
+        /* Hide anchor panel on smaller phone views to maximize screen scaling */
+        @media (max-width: 1400px) {
+            .floating-nav { display: none; }
+        }
+
         .text-light-muted { color: #94a3b8; }
     </style>
 </head>
 <body>
+
+    <nav class="floating-nav" aria-label="Sidebar Navigation Matrix">
+        <a href="#target" title="Career Target">01</a>
+        <a href="#history" title="Experience History">02</a>
+        <a href="#capstone" title="Capstone Project">★</a>
+        <a href="#skills" title="Skills Inventory">03</a>
+        <a href="#logs" title="Training Logs">04</a>
+        <a href="#case-studies" title="Troubleshooting Labs">05</a>
+    </nav>
 
     <div class="container my-5">
         <div class="row g-4">
@@ -245,14 +315,14 @@
 
             <div class="col-lg-8">
                 
-                <div class="data-card">
+                <div id="target" class="data-card">
                     <h2 class="h6 tech-heading mb-3">01 // Career Target</h2>
                     <p class="mb-0 text-light-muted" style="line-height: 1.7; font-size: 0.95rem;">
                         A solution-oriented BS Information Systems graduate with a TESDA NCII in Computer Systems Servicing. Seeking to leverage a strong passion for troubleshooting and practical problem-solving skills to diagnose and resolve hardware and software challenges while contributing to team infrastructure operations.
                     </p>
                 </div>
 
-                <div class="data-card">
+                <div id="history" class="data-card">
                     <h2 class="h6 tech-heading mb-4">02 // Operational Experience History</h2>
                     
                     <div class="history-node">
@@ -313,7 +383,7 @@
                     </div>
                 </div>
 
-                <div class="featured-project">
+                <div id="capstone" class="featured-project">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h2 class="h6 text-uppercase fw-bold m-0" style="color: #ef4444; font-family: monospace; letter-spacing: 0.05em;">⚡ Core Capstone Deployment</h2>
                         <span class="badge text-danger" style="background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">🪟 Windows Only</span>
@@ -332,7 +402,7 @@
                     </div>
                 </div>
 
-                <div class="data-card">
+                <div id="skills" class="data-card">
                     <h2 class="h6 tech-heading mb-3">03 // Skills Inventory Matrix</h2>
                     <div class="d-flex flex-wrap pt-1">
                         <span class="hardware-badge">Basic troubleshooting and technical support</span>
@@ -355,7 +425,7 @@
                     </div>
                 </div>
 
-                <div class="data-card">
+                <div id="logs" class="data-card">
                     <h2 class="h6 tech-heading mb-4">04 // Training & Event Logs</h2>
                     <div class="d-flex flex-column gap-3">
                         
@@ -392,79 +462,103 @@
                     </div>
                 </div>
 
-                <div class="data-card">
+                <div id="case-studies" class="data-card">
                     <h2 class="h6 tech-heading mb-4">05 // Troubleshooting Lab Logs</h2>
-                    <div class="d-flex flex-column gap-3">
+                    <div class="accordion" id="troubleshootingAccordion">
                         
-                        <div class="case-card">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="h6 fw-bold text-white m-0" style="font-family: monospace;">CASE 01 // ASUS Vivobook 15: Green Lines with White Screen</h4>
-                                <span class="case-tag" style="background-color: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2);">LAPTOP HARDWARE</span>
-                            </div>
-                            <div class="small text-light-muted" style="line-height: 1.6;">
-                                <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Laptop screen gradually turned white with green lines during a gaming session until it covered the entire display.</p>
-                                <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Interviewed the customer, who noted a lower horizontal line had been present for a long time. Inspected the internals and found heavy dust buildup, leading to overheating that permanently burned out the LCD layer.</p>
-                                <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Removed the damaged LCD panel, verified its part number, and ordered a direct replacement online. Installed the new screen while deep-cleaning the internal components and replacing the dried factory thermal paste with high-quality **Arctic MX6** compound.</p>
-                            </div>
-                        </div>
-
-                        <div class="case-card">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="h6 fw-bold m-0" style="font-family: monospace; color: #a855f7;">CASE 02 // HP Series 14: Extremely Slow Startup</h4>
-                                <span class="case-tag" style="background-color: rgba(168, 85, 247, 0.1); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.2);">OS & STORAGE</span>
-                            </div>
-                            <div class="small text-light-muted" style="line-height: 1.6;">
-                                <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Laptop takes an excessive amount of time to boot up and responds slowly during initial loading phases.</p>
-                                <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Checked system specifications and confirmed the device was running on a slow mechanical HDD. Storage was completely full, and the current operating system configuration was cluttered.</p>
-                                <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Recommended an SSD upgrade, but adjusted to a budget alternative at the client's request. Backed up user files, performed a fresh installation of Windows 10, configured essential drivers, cleaned out the dust, and applied fresh thermal paste to improve responsiveness.</p>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed d-flex justify-content-between align-items-center text-start gap-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <span class="me-auto font-monospace">CASE 01 // ASUS Vivobook 15: Green Lines with White Screen</span>
+                                    <span class="case-tag bg-info-subtle text-info border border-info-subtle me-3">LAPTOP HARDWARE</span>
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body small text-light-muted" style="line-height: 1.6;">
+                                    <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Laptop screen gradually turned white with green lines during a gaming session until it covered the entire display.</p>
+                                    <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Interviewed the customer, who noted a lower horizontal line had been present for a long time. Inspected the internals and found heavy dust buildup, leading to overheating that permanently burned out the LCD layer.</p>
+                                    <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Removed the damaged LCD panel, verified its part number, and ordered a direct replacement online. Installed the new screen while deep-cleaning the internal components and replacing the dried factory thermal paste with high-quality **Arctic MX6** compound.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="case-card">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="h6 fw-bold m-0" style="font-family: monospace; color: #f59e0b;">CASE 03 // Hanabishi Stand Fan: No Power or Rotation</h4>
-                                <span class="case-tag" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.2);">ELECTROMECHANICAL</span>
-                            </div>
-                            <div class="small text-light-muted" style="line-height: 1.6;">
-                                <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Fan completely refuses to spin when turned on, showing no signs of blade movement.</p>
-                                <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Tested the main power lines for continuity using a digital multimeter and confirmed electricity was flowing. Detected faint motor housing vibrations when plugged in, diagnosing a physically locked shaft and dried-up bushings.</p>
-                                <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Disassembled the motor assembly cage. Removed the seized front and rear sleeve bushings along with the worn center shaft. Replaced them with fresh matching components, applied premium machine oil to the wells, and verified free rotation.</p>
-                            </div>
-                        </div>
-
-                        <div class="case-card">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="h6 fw-bold m-0" style="font-family: monospace; color: #ef4444;">CASE 04 // Astron 2.2L Rice Cooker: Completely Dead Power</h4>
-                                <span class="case-tag" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3);">APPLIANCE POWER</span>
-                            </div>
-                            <div class="small text-light-muted" style="line-height: 1.6;">
-                                <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Unit does not power on at all; status indicator lights remain entirely dark upon connection.</p>
-                                <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Checked the main power plug with a multimeter probe and found no circuit continuity. Opened the bottom panel shell and isolated a blown thermal safety fuse.</p>
-                                <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Located heavily rusted wires connected to the main heating component that were causing loose connections and electrical resistance. Cut away the corroded wiring, re-terminated the contacts cleanly, and replaced the blown thermal fuse to restore power safely.</p>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed d-flex justify-content-between align-items-center text-start gap-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <span class="me-auto font-monospace">CASE 02 // HP Series 14: Extremely Slow Startup</span>
+                                    <span class="case-tag bg-purple-subtle text-purple border border-purple-subtle me-3" style="color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">OS & STORAGE</span>
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body small text-light-muted" style="line-height: 1.6;">
+                                    <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Laptop takes an excessive amount of time to boot up and responds slowly during initial loading phases.</p>
+                                    <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Checked system specifications and confirmed the device was running on a slow mechanical HDD. Storage was completely full, and the current operating system configuration was cluttered.</p>
+                                    <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Recommended an SSD upgrade, but adjusted to a budget alternative at the client's request. Backed up user files, performed a fresh installation of Windows 10, configured essential drivers, cleaned out the dust, and applied fresh thermal paste to improve responsiveness.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="case-card">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="h6 fw-bold m-0" style="font-family: monospace; color: #10b981;">CASE 05 // American Home Twin Tub: Spin Dryer Works, Wash Tub Dead</h4>
-                                <span class="case-tag" style="background-color: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2);">LOGIC INTERFACE</span>
-                            </div>
-                            <div class="small text-light-muted" style="line-height: 1.6;">
-                                <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> The spin-dryer tub functions normally, but the main washing tub fails to rotate or stay engaged.</p>
-                                <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Noted that the physical wash timer dial felt loose and would spring back immediately. Verified wiring continuity from the plug to the internal back panel with a multimeter, confirming that the electrical path was intact but the timer dial was broken mechanically.</p>
-                                <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Opened the rear control housing plate and disengaged the failed mechanical timer piece. Wired in a brand new matching wash timer replacement unit and tested operation; the cycle loops now hold contacts perfectly.</p>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed d-flex justify-content-between align-items-center text-start gap-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <span class="me-auto font-monospace">CASE 03 // Hanabishi Stand Fan: No Power or Rotation</span>
+                                    <span class="case-tag bg-warning-subtle text-warning border border-warning-subtle me-3">ELECTROMECHANICAL</span>
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body small text-light-muted" style="line-height: 1.6;">
+                                    <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Fan completely refuses to spin when turned on, showing no signs of blade movement.</p>
+                                    <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Tested the main power lines for continuity using a digital multimeter and confirmed electricity was flowing. Detected faint motor housing vibrations when plugged in, diagnosing a physically locked shaft and dried-up bushings.</p>
+                                    <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Disassembled the motor assembly cage. Removed the seized front and rear sleeve bushings along with the worn center shaft. Replaced them with fresh matching components, applied premium machine oil to the wells, and verified free rotation.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="case-card">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="h6 fw-bold m-0" style="font-family: monospace; color: #06b6d4;">CASE 06 // Panasonic 1HP Window AC: Noisy Fan Motor</h4>
-                                <span class="case-tag" style="background-color: rgba(6, 182, 212, 0.1); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.2);">FIELD DIAGNOSTICS</span>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed d-flex justify-content-between align-items-center text-start gap-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <span class="me-auto font-monospace">CASE 04 // Astron 2.2L Rice Cooker: Completely Dead Power</span>
+                                    <span class="case-tag bg-danger-subtle text-danger border border-danger-subtle me-3">APPLIANCE POWER</span>
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body small text-light-muted" style="line-height: 1.6;">
+                                    <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Unit does not power on at all; status indicator lights remain entirely dark upon connection.</p>
+                                    <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Checked the main power plug with a multimeter probe and found no circuit continuity. Opened the bottom panel shell and isolated a blown thermal safety fuse.</p>
+                                    <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Located heavily rusted wires connected to the main heating component that were causing loose connections and electrical resistance. Cut away the corroded wiring, re-terminated the contacts cleanly, and replaced the blown thermal fuse to restore power safely.</p>
+                                </div>
                             </div>
-                            <div class="small text-light-muted" style="line-height: 1.6;">
-                                <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Air conditioning unit creates a loud, shaking noise and intense rattling sounds during normal running operations.</p>
-                                <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Suspected a compressor issue and applied standard service check procedures. Removed the cover sleeve, measured the temperature differences (Delta-T validation), and checked operating amperage loads; electrical and mechanical baselines were normal.</p>
-                                <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Discovered that the original shipping/transportation foams inside the internal fan tracks were never removed, causing the fan blades to strike them. Cleared out the blockages and reassembled the sleeve casing; marked the unit as **Class B / Perfect Condition** with sound levels fully quieted.</p>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed d-flex justify-content-between align-items-center text-start gap-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <span class="me-auto font-monospace">CASE 05 // American Home Twin Tub: Spin Dryer Works, Wash Tub Dead</span>
+                                    <span class="case-tag bg-success-subtle text-success border border-success-subtle me-3">LOGIC INTERFACE</span>
+                                </button>
+                            </h3>
+                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body small text-light-muted" style="line-height: 1.6;">
+                                    <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> The spin-dryer tub functions normally, but the main washing tub fails to rotate or stay engaged.</p>
+                                    <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Noted that the physical wash timer dial felt loose and would spring back immediately. Verified wiring continuity from the plug to the internal back panel with a multimeter, confirming that the electrical path was intact but the timer dial was broken mechanically.</p>
+                                    <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Opened the rear control housing plate and disengaged the failed mechanical timer piece. Wired in a brand new matching wash timer replacement unit and tested operation; the cycle loops now hold contacts perfectly.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed d-flex justify-content-between align-items-center text-start gap-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <span class="me-auto font-monospace">CASE 06 // Panasonic 1HP Window AC: Noisy Fan Motor</span>
+                                    <span class="case-tag bg-cyan-subtle text-info border border-info-subtle me-3" style="color: #22d3ee; border-color: rgba(34, 211, 238, 0.3);">FIELD DIAGNOSTICS</span>
+                                </button>
+                            </h3>
+                            <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                <div class="accordion-body small text-light-muted" style="line-height: 1.6;">
+                                    <p class="mb-2"><strong class="text-white">&gt; SYMPTOM:</strong> Air conditioning unit creates a loud, shaking noise and intense rattling sounds during normal running operations.</p>
+                                    <p class="mb-2"><strong class="text-white">&gt; DIAGNOSTICS:</strong> Suspected a compressor issue and applied standard service check procedures. Removed the cover sleeve, measured the temperature differences (Delta-T validation), and checked operating amperage loads; electrical and mechanical baselines were normal.</p>
+                                    <p class="mb-0"><strong class="text-white">&gt; RESOLUTION:</strong> Discovered that the original shipping/transportation foams inside the internal fan tracks were never removed, causing the fan blades to strike them. Cleared out the blockages and reassembled the sleeve casing; marked the unit as **Class B / Perfect Condition** with sound levels fully quieted.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -480,5 +574,6 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
